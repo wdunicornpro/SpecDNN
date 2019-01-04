@@ -2,24 +2,24 @@
 python main.py --arch LeNet_5
 
 # prune -- 9.96%   0.029129
-python main.py --arch LeNet_5 --prune --algo OSLOM --pretrained saved_models/LeNet_5.best_origin.pth.tar
+# python main.py --arch LeNet_5 --prune --algo OSLOM --pretrained saved_models/LeNet_5.best_origin.pth.tar
 
 # retrain -- 30.39%
-python main.py --arch LeNet_5 --retrain --pretrained saved_models/LeNet_5.prune.OSLOM.pth.tar --lr 0.01
+# python main.py --arch LeNet_5 --retrain --pretrained saved_models/LeNet_5.prune.OSLOM.pth.tar --lr 0.01
 
 # specialize -- 90.20%  0.007689
 python main.py --arch LeNet_5 --prune --specialize 0 --algo OSLOM --pretrained saved_models/LeNet_5.best_origin.pth.tar
 # 92.38%    0.022764
 python main.py --arch LeNet_5 --prune --specialize 1 --algo OSLOM --pretrained saved_models/LeNet_5.best_origin.pth.tar
-# FAIL(79.64%    0.025366)
+# 79.64%    0.025366
 python main.py --arch LeNet_5 --prune --specialize 2 --algo OSLOM --pretrained saved_models/LeNet_5.best_origin.pth.tar
-# FAIL(85.31%    0.026829)
+# 85.31%    0.026829
 python main.py --arch LeNet_5 --prune --specialize 3 --algo OSLOM --pretrained saved_models/LeNet_5.best_origin.pth.tar
-# FAIL(84.98%    0.012892)
+# 84.98%    0.012892
 python main.py --arch LeNet_5 --prune --specialize 4 --algo OSLOM --pretrained saved_models/LeNet_5.best_origin.pth.tar
 # 91.08%    0.021580
 python main.py --arch LeNet_5 --prune --specialize 5 --algo OSLOM --pretrained saved_models/LeNet_5.best_origin.pth.tar
-# FAIL(89.20%    0.040790)
+# 89.20%    0.040790
 python main.py --arch LeNet_5 --prune --specialize 6 --algo OSLOM --pretrained saved_models/LeNet_5.best_origin.pth.tar
 # 89.72%    0.022787
 python main.py --arch LeNet_5 --prune --specialize 7 --algo OSLOM --pretrained saved_models/LeNet_5.best_origin.pth.tar

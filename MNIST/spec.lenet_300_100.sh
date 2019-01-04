@@ -2,10 +2,10 @@
 python main.py
 
 # prune -- 16.35%  0.009316
-python main.py --prune --algo OSLOM --pretrained saved_models/LeNet_300_100.best_origin.pth.tar
+# python main.py --prune --algo OSLOM --pretrained saved_models/LeNet_300_100.best_origin.pth.tar
 
 # retrain -- 20.13%
-python main.py --retrain --pretrained saved_models/LeNet_300_100.prune.OSLOM.pth.tar --lr 0.01
+# python main.py --retrain --pretrained saved_models/LeNet_300_100.prune.OSLOM.pth.tar --lr 0.01
 
 # specialize -- 90.21%  0.005015
 python main.py --prune --specialize 0 --algo OSLOM --pretrained saved_models/LeNet_300_100.best_origin.pth.tar
