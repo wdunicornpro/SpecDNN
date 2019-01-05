@@ -3,7 +3,7 @@ A Pytorch implementation of Specialized DNN Extraction based on Social Network C
 
 ## Introduction
 The purpose of this project is to extract light-weighted specialized sub-network with specific functionalities from a heavy-weighted general-purposed pre-trained neural network. One practical application of this project will be extracting application specific neural network models to run and test on local mobile devices.  
-The basic idea of this project is to adapt Social Network Community Detection methods to neural networks. The community detection algorithm we choose is OSLOM(https://oslom.org).  
+The basic idea of this project is to adapt Social Network Community Detection methods to neural networks. The community detection algorithm we choose is OSLOM(http://oslom.org).  
 We tested our method on MNIST using LeNet-5 and LeNet-300-100.
 
 
@@ -36,4 +36,4 @@ Here is the results for the experiment:
 ||0-spec|1-spec|2-spec|3-spec|4-spec|5-spec|6-spec|7-spec|8-spec|9-spec|spec avg|original|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |Compress Rate |0.7689%|2.2764%|2.5366%|2.6829%|1.2892%|2.1580%|4.0790%|2.2787%|2.5668%|4.5134%|2.515%|100%|
-|Accuracy|99.21%|99.79%|99.37%|99.63%|99.34%|98.53%|99.73%|99.56%|99.56%|99.05%|99.377|99.41%|
+|Accuracy|99.21%|99.79%|99.37%|99.63%|99.34%|98.53%|99.73%|99.56%|99.56%|99.05%|99.377%|99.41%|
