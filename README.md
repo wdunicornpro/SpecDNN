@@ -47,7 +47,7 @@ Basically, OSLOM constructs a community by randomly selecting a node as the orig
 The criteria of 'strong connection' for weighted networks defined by OSLOM is: 
 1. ![](https://latex.codecogs.com/gif.latex?%3Cw_%7Bij%7D%3E%3D%5Cfrac%7B2%3Cw_%7Bi%7D%3E%3Cw_%7Bj%7D%3E%7D%7B%3Cw%7Bi%7D%3E&plus;%3Cw%7Bj%7D%3E%7D)
 2. ![](https://latex.codecogs.com/gif.latex?r_%7Bj%7D%28c%29%3Dp%28w_%7Bcj%7D%3Ex%29%3Dexp%28-x/%3Cw_%7Bcj%7D%3E%29)
-3. ![](https://latex.codecogs.com/gif.latex?%5COmega_%7Bq%7D%28r%29%3Dp%28r_%7Bq%7D%3Cx%29%3D%5Csum_%7Bi%3Dq%7D%5E%7BN-n_%7Bc%7D%7D%5Cbinom%7BN-n_%7Bc%7D%7D%7Bi%7Dx%5Ei%281-x%29%5E%7BN-n_%7Bc%7D-i%7D)
+3. ![](https://latex.codecogs.com/gif.latex?%5COmega_%7Bq%7D%28r%29%3Dp%28r_%7Bq%7D%3Cx%29%3D%5Csum_%7Bi%3Dq%7D%5E%7BN-n_%7Bc%7D%7D%5Cbinom%7BN-n_%7Bc%7D%7D%7Bi%7Dr%5Ei%281-r%29%5E%7BN-n_%7Bc%7D-i%7D)
 
 ![](https://latex.codecogs.com/gif.latex?%3Cw_%7Bi%7D%3E) is the average weight of all the edges connected to node i, and ![](https://latex.codecogs.com/gif.latex?r_%7Bq%7D) is the q-st smallest value of ![](https://latex.codecogs.com/gif.latex?%5C%7Br_%7Bj%7D%5C%7D).  
 Please check the original paper if you're interested in the details of OSLOM.
