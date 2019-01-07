@@ -1,3 +1,5 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default">
+</script>
 # SpecDNN
 A Pytorch implementation of Specialized DNN Extraction based on Social Network Community Detection.
 
