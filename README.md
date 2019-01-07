@@ -40,7 +40,7 @@ Here is the results for the experiment:
 
 ## Details on Algorithm
 ### Network Community Detection Algorithms
-OSLOM is a Network Community Detection algorithm proposed by Andrea Lancichinetti et al.(2011)[1]. The basic idea of OSLOM is to compare the connections in the input network with those in the corresponding random network(null model). John Palowitch et al. provided more detailed description on this approach and proposed a more sophisticated algorithm for weighted networks named CMSE[2]. While we are considering to test the criteria proposed by John Palowitch et al. for CMSE in the future, we used OSLOM for our current experiments.
+OSLOM is a Network Community Detection algorithm proposed by Andrea Lancichinetti et al.(2011)[1]. The basic idea of OSLOM is to compare the connections in the input network with those in the corresponding random network(null model). John Palowitch et al. provided more detailed description on this approach and proposed a more sophisticated algorithm for weighted networks named CCME[2]. While we are considering to test the criteria proposed by John Palowitch et al. for CMSE in the future, we used OSLOM for our current experiments.
 
 ### OSLOM Basics
 Basically, OSLOM constructs a community by randomly selecting a node as the original community and repeatedly including nodes with 'strong connection' with the current community into the community.    
