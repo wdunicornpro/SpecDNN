@@ -1,0 +1,23 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: Group_10.aux
+White space in argument---line 2 of file Group_10.aux
+ : \citation{Deep
+ :                Compression}
+I'm skipping whatever remains of this command
+White space in argument---line 3 of file Group_10.aux
+ : \citation{Speedup
+ :                   CNN}
+I'm skipping whatever remains of this command
+White space in argument---line 5 of file Group_10.aux
+ : \citation{Image
+ :                 Recog App}
+I'm skipping whatever remains of this command
+White space in argument---line 8 of file Group_10.aux
+ : \citation{Deep
+ :                Compression}
+I'm skipping whatever remains of this command
+The style file: ACM-Reference-Format-Journals.bst
+I found no \bibdata command---while reading file Group_10.aux
+Warning--I didn't find a database entry for "CAPTOR"
+Warning--I didn't find a database entry for "OSLOM"
+Warning--I didn't find a database entry for "MNIST"
+(There were 5 error messages)

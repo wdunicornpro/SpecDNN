@@ -1,0 +1,196 @@
+% v2-acmtog-sample.tex, dated March 7 2012
+% This is a sample file for ACM Transactions on Graphics
+%
+% Compilation using 'acmtog.cls' - version 1.2 (March 2012), Aptara Inc.
+% (c) 2010 Association for Computing Machinery (ACM)
+%
+% Questions/Suggestions/Feedback should be addressed to => "acmtexsupport@aptaracorp.com".
+% Users can also go through the FAQs available on the journal's submission webpage.
+%
+% Steps to compile: latex, bibtex, latex latex
+%
+% For tracking purposes => this is v1.2 - March 2012
+\documentclass{acmtog} % V1.2
+
+\usepackage{amsmath}
+\usepackage[ruled,lined,boxed,linesnumbered]{algorithm2e}
+%\acmVolume{VV}
+%\acmNumber{N}
+%\acmYear{YYYY}
+%\acmMonth{Month}
+%\acmArticleNum{XXX}
+%\acmdoi{10.1145/XXXXXXX.YYYYYYY}
+
+\acmVolume{28}
+\acmNumber{4}
+\acmYear{2009}
+\acmMonth{September}
+\acmArticleNum{106}
+\acmdoi{10.1145/1559755.1559763}
+
+\begin{document}
+
+
+\title{Specialized DNN Extraction based on Social Network Community Detection} % title
+
+\author{
+Duo Wang
+\affil{Shanghai Jiao Tong University}
+\and
+Xiaosong Jia
+\affil{Shanghai Jiao Tong University}
+% NOTE! Affiliations placed here should be for the institution where the
+%       BULK of the research was done. If the author has gone to a new
+%       institution, before publication, the (above) affiliation should NOT be changed.
+%       The authors 'current' address may be given in the "Author's addresses:" block (below).
+%       So for example, Mr. Fogarty, the bulk of the research was done at UIUC, and he is
+%       currently affiliated with NASA.
+}
+
+
+\maketitle
+
+\section{Introduction}
+The emergence of cloud services and mobile internet have changed people's life style as well as made tons of successful corparations.  With the evolution of artificial intelligence and deep learning technologies, a new interest has arised in how to make scalable deep learning models which can fit in very limited resources on mobile devices.
+Many work have been done on DNN compression and acceleration\cite{Deep Compression}\cite{Speedup CNN}.  A new approach focusing on class-level oriented optimization have been proposed recently\cite{CAPTOR}. While many of the popular deep learning models have very sophisticated functionalities, studies show\cite{Image Recog App} that only a few of the functionalities are needed in mobile application scenarios. For instance, CNN models for classification tasks are generally trained to identify a vast amount of classes(like ImageNet with 1000 output classes). However only a small part of the classes may be needed for mobile applications(like written or printed characters for dictionary apps). Our work is intended to propose a new approach to extract light-weighted specialized networks from pre-trained general-purpose DNN models with the capability to function properly on mobile systems.
+Our method is based on Social Network Community Detecion algorithms. Community detection aims at finding subsets of nodes in a complex network where nodes inside one community should have strong connections with each other while nodes belonging to different communities should have weak connections (strong intra-connection and weak inter-connection). Deep Neural Networks are proved to have sparsity at the end… For DNN based classifying models, our idea is to obtain specialized networks by finding subset of units 'strongly connected' to some of the output units. The method is intended to find the units relatively 'important' to the prediction of some of the output classes. We adapted the community detection algorithm proposed by Andrea Lancichinetti et al.(2011)\cite{OSLOM} to work for neural networks.
+Experiments are conducted on MNIST\cite{MNIST} data set with LeNet. Our community detection based algorithm is proved to compress the network by 0.265\% on LeNet-300-100 and 2.28\% on LeNet-5 averagely, with a less than 1\% accuracy loss.
+
+
+\section{Related Work}
+\label{sec:relatedwork}
+%
+Storage and memory cost has long been  Many works have been done on Deep Neural Network compression and accelerating. Song Han et al.(2016)\cite{Deep Compression} proposed a combined approach of pruning, quantization and huffman coding which managed to compress LeNet-5 by 39 times, AlexNet by 35 times and VGG-16 by 49 times without accuracy loss in the experiment they conducted. A recent work has brought forth a class adaptive pruning framework named CAPTOR\cite{CAPTOR}. The authors discussed the prosperity of launching light-weighted specialized DNN models on mobile devices. They have pointed out that most mobile apps have a very focused subset  of typical classification targets when using classifying CNN models for image recognition, indicating that instead of launching the versatile powerful yet heavy-weighted DNN models trained on huge datasets with over 1000 classification targets, launching specialized models extracted from the original network which only focus on a subset of the classification targets will be much more efficient and barely damage the performance. Our work is based on the idea of extracting specialized sub-network from a pretrained versatile DNN model for mobile applications.
+
+\section{Problem Formulation}
+\label{sec:probform}
+Our algorithm is expected to extract specialized sub-network from a pre-trained DNN model with some of the functionalities from the original network which is much smaller than the original one and can function properly under some specific application domain. Precisely speaking, given a pre-trained CNN based classifier with multiple output targets, our algorithm should be able to extract a sub-network to make predictions on one of the output classes with a tolerable precision loss and a considerable compress rate. The desired precision loss and comperss rate are both 1\%.
+
+\section{Proposed Methods}
+\label{sub:methods}
+We adaptted the community detection algorithm proposed by Andrea Lancichinetti et al.\cite{OSLOM} named OSLOM.
+\subsection*{OSLOM Basics}
+Basically, OSLOM constructs a community by randomly selecting a node as the original community and repeatedly including nodes with 'strong connection' with the current community into the community.
+The criteria of 'strong connection' for weighted networks defined by OSLOM is based on statistic significance of the weight between a pair of nodes. The expected weight between any two nodes is:
+\begin{eqnarray}
+  \tau	<w_{ij}>=\frac{2<w_{i}><w_{j}>}{<w_{i}>+<w_{j}>}
+  \label{eq:Link_n_Stark}
+\end{eqnarray}
+where $<w_{i}>=\frac{\sum_{w\in W_{i}}w}{|W_{i}|}$ reflects the average weight of all the edges connected to node i.
+
+We can easily adapt the above equation to reflect the expected connectiveness between a single node and a community:
+\begin{equation}
+\label{eq:moon}
+ <w_{Cj}>=\frac{2<w_{C}><w_{j}>}{<w_{C}>+<w_{j}>}
+\end{equation}
+where $<w_{c}>=\frac{\sum_{w\in W_{C}}w}{|W_{C}|}$ reflects the average weight of all the edges connected to community C.
+
+The statistic significance of node j in regard to community C is therefore:
+\begin{equation}
+ r_{j}(C )=p(w_{Cj}>x)=exp(-x/<w_{Cj}>)
+\end{equation}
+where x is the actual weight between j and C.
+
+The next step involves selecting all the nodes with significant connection to community C. OSLOM employs Bonferroni correction method to model the selection procedure by calculating:
+\begin{equation}
+	\Omega_{q}(r)=p(r_{q}<x)=\sum_{i=q}^{N-n_{C}}\binom{N-n_{C}}{i}r^i(1-r)^{N-n_{C}-i}
+\end{equation}
+$\{r_{j}\}$ is viewed as a uniform random variable distributed on [0,1], and $r_{q}$ is the q-st smallest value of $\{r_{j}\}$ .
+
+The algorithm selects the smallest possible value of q where $\Omega_{q}<t, \Omega_{q+1}\geq t$ and includes the nodes corresponding to $r_{1}, r_{2}, …, r_{q}$.
+\subsection*{Weight Representation}
+%
+Since Network Community Detection algorithms require positive weights on edges, we desiged a weight representation method, where:
+\begin{enumerate}
+	\item $w'=|w|$ for numerical weights(fully-connected linear layers)\\
+    \item $w'=mean(abs(w))$ for convolution kernels
+\end{enumerate}
+
+\subsection*{Specialized DNN Extraction}
+\begin{algorithm}\label{algo:SpecDNN}
+            \caption{Specialized DNN Extraction}
+            \KwData{Weights[m][n],t}
+            \KwResult{selected[q]}
+            Weights$\leftarrow$mean(abs(Weights))\\
+            R[m]$\leftarrow exp(-\frac{m}{2}\frac{\sum_{i\in C}W_{ij}}{\sum_{i\in C,j\in J}W_{ij}}-\frac{1}{2})$\\
+            Rq[m]$\leftarrow$sorted(R)
+            Omega[m]$\leftarrow\sum_{i=q}^{m}\binom{m}{i}r^i(1-r)^{m-i}$\\
+            \For{q=0;q<m-1;q++}{
+                \If{Omega[q]<t,Omega[q+1]$\geq$t}{
+                    select units 1,2,...,q and return 
+                }
+            }
+            return all units
+\end{algorithm}
+%
+We therefore propose our community detection based specialized DNN extraction algorithm( Algorithm.\ref{algo:SpecDNN}).
+
+In order to obtain sub-network with specialized functionalities, we perform community detection starting from one of the output units. Since neural networks are fully-connected level graphs, the only reasonable approach is to run community detection in a layer-by-layer manner. Also, because of the special structure of neural networks, the criteria of strong connection can be rewritten as:
+\begin{enumerate}
+		\item $r_{j}(C )=exp(-\frac{m}{2}\frac{\sum_{i\in C}W_{ij}}{\sum_{i\in C,j\in J}W_{ij}}-\frac{1}{2})$, where $\{W_{ij}\}$ is the weight matrix, m is the number of units in the current layer, C is all the units included in the last layer and J is all the units in the current layer.
+        \item $\Omega_{q}(r )=p(r_{q}<r)=\sum_{i=q}^{m}\binom{m}{i}r^i(1-r)^{m-i}$
+\end{enumerate}
+
+
+\section{Experiments}
+\label{sec:experiments}
+%
+We conducted our experiment on MNIST\cite{MNIST} dataset using LetNet-300-100 and LeNet-5.
+Table.\ref{tab:LeNet-300-100}\&\ref{tab:LeNet-5} shows the results, with the compress rate and test accuracy listed for each model we have extracted. We managed to extract specialized models with an average compress rate of 0.265\% for LeNet-300-100 and 2.51\% for LeNet-5 in regard of the number of parameters.
+
+
+\begin{table*}[htbp]
+\tbl{LeNet-300-100 on MNIST}{%
+\begin{tabular}{lllllllllllll}\hline
+              & 0-spec   & 1-spec   & 2-spec   & 3-spec   & 4-spec   & 5-spec   & 6-spec   & 7-spec   & 8-spec   & 9-spec   & spec avg  & original \\
+\hline
+Compress Rate & 0.5015\% & 0.0770\% & 0.2014\% & 0.1262\% & 0.3388\% & 0.2618\% & 0.1349\% & 0.4343\% & 0.1315\% & 0.4467\% & 0.26541\% & 100\%    \\
+Accuracy      & 98.9\%   & 98.66\%  & 98.47\%  & 97.23\%  & 99.01\%  & 98.46\%  & 97.29\%  & 98.18\%  & 96.88\%  & 98.70\%  & 98.12\%   & 98.28\%\\
+\hline
+\end{tabular}}
+\label{tab:LeNet-300-100}
+\begin{tabnote}
+This is an example of table footnote. This is an example of table footnote. This is an example of table footnote.
+This is an example of table footnote. This is an example of table footnote.
+\end{tabnote}
+\end{table*}
+
+\begin{table*}[htbp]
+\tbl{LeNet-5 on MNIST}{%
+\begin{tabular}{lllllllllllll}\hline
+              & 0-spec   & 1-spec   & 2-spec   & 3-spec   & 4-spec   & 5-spec   & 6-spec   & 7-spec   & 8-spec   & 9-spec   & spec avg & original \\
+\hline
+Compress Rate & 0.7689\% & 2.2764\% & 2.5366\% & 2.6829\% & 1.2892\% & 2.1580\% & 4.0790\% & 2.2787\% & 2.5668\% & 4.5134\% & 2.515\%  & 100\%    \\
+Accuracy      & 99.21\%  & 99.79\%  & 99.37\%  & 99.63\%  & 99.34\%  & 98.53\%  & 99.73\%  & 99.56\%  & 99.56\%  & 99.05\%  & 99.377   & 99.41\% \\
+\hline
+\end{tabular}}
+\label{tab:LeNet-5}
+\begin{tabnote}
+This is an example of table footnote. This is an example of table footnote. This is an example of table footnote.
+This is an example of table footnote. This is an example of table footnote.
+\end{tabnote}
+\end{table*}
+
+
+% Bibliography
+\bibliographystyle{ACM-Reference-Format-Journals}
+\begin{thebibliography}{00}
+
+\bibitem{OSLOM}
+Lancichinetti A, Radicchi F, Ramasco JJ, Fortunato S (2011) \emph{Finding Statistically Significant Communities in Networks}. \emph{PLoS ONE},6(4):e18961.
+\bibitem{CCME}
+John Palowitch, Shankar Bhamidi, Andrew B. Nobel (2017) \emph{Significance-based community detection in weighted networks}. \emph{Journal of Machine Learning Research}18(2018):1-48.
+\bibitem{Deep Compression}
+Song Han, Huizi Mao, William J. Dally (2016) \emph{Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding}. \emph{arXiv}:1510.00149 [cs.CV].
+\bibitem{Speedup CNN}
+Max Jaderberg, Andrea Vedaldi, Andrew Zisserman (2014) \emph{Speeding up convolutional neural networks with low rank expansions}. \emph{arXiv}:1405.3866 [cs.CV].
+\bibitem{CAPTOR}
+\emph{CAPTOR: A Class Adaptive Filter Pruning Framework for Convolutional Neural Networks in Mobile Applications}
+\bibitem{MNIST}
+Y. LeCun, L. Bottou, Y. Bengio, P. Haffner (1998) \emph{Gradient-based learning applied to document recognition}. \emph{Proceedings of the IEEE}, 86(11):2278-2324.
+\bibitem{Image Recog App}
+\emph{Best image recongnition apps for android(Top 100)-AppCrawlr}. \emph{https://appcrawlr.com/android-apps/best-apps-image-recognition}
+\end{thebibliography}
+
+\end{document}
+% End of v2-acmtog-sample.tex (March 2012) - Gerry Murray, ACM
