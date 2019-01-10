@@ -1,8 +1,8 @@
 SyncTeX Version:1
-Input:1:C:\Users\doylle\Desktop\AlgorithmDesignAndAnalysis\proj\tex\Group_10.tex
-Input:2:C:\Users\doylle\Desktop\AlgorithmDesignAndAnalysis\proj\tex\acmtog.cls
+Input:1:D:\SpecDNN\tex\Group_10.tex
+Input:2:D:\SpecDNN\tex\acmtog.cls
 Input:3:C:\Program Files\MiKTeX 2.9\tex\latex\base\latexsym.sty
-Input:4:C:\Users\doylle\Desktop\AlgorithmDesignAndAnalysis\proj\tex\url.sty
+Input:4:D:\SpecDNN\tex\url.sty
 Input:5:C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\times.sty
 Input:6:C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty
 Input:7:C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
@@ -18,11 +18,11 @@ Input:16:C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty
 Input:17:C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
 Input:18:C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
 Input:19:C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
-Input:20:C:\Users\doylle\Desktop\AlgorithmDesignAndAnalysis\proj\tex\algorithm2e.sty
+Input:20:D:\SpecDNN\tex\algorithm2e.sty
 Input:21:C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty
 Input:22:C:\Program Files\MiKTeX 2.9\tex\latex\tools\xspace.sty
 Input:23:C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty
-Input:24:C:\Users\doylle\Desktop\AlgorithmDesignAndAnalysis\proj\tex\Group_10.aux
+Input:24:D:\SpecDNN\tex\Group_10.aux
 Input:25:C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd
 Input:26:C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii
 Input:27:C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty
@@ -42,7 +42,7 @@ Unit:1
 X Offset:0
 Y Offset:0
 Content:
-!2652
+!2427
 {1
 [1,91:-5898,47937617:36569088,47133491,85128
 [1,91:3533046,47937617:33030144,43725619,85128
@@ -3089,15 +3089,15 @@ x1,100:4860140,17396858
 )
 x1,100:5061298,17308385
 g1,100:5159602,17308385
-x1,100:5327992,17308385
-g1,100:5426296,17308385
-x1,100:5699817,17308385
-(1,100:5699817,17396858:271290,169300,76459
-x1,100:5924230,17396858
+x1,100:5833162,17308385
+g1,100:5931466,17308385
+x1,100:6204987,17308385
+(1,100:6204987,17396858:271290,169300,76459
+x1,100:6429400,17396858
 )
-$1,100:5971107,17308385
-x1,100:6118563,17308385
-k1,101:19261686,17308385:13143123
+$1,100:6476277,17308385
+x1,100:6623733,17308385
+k1,101:19261686,17308385:12637953
 g1,101:19261686,17308385
 )
 (1,101:3533046,18689667:15728640,473491,145816
@@ -5753,8 +5753,8 @@ x1,195:36563190,47937617
 ]
 !23684
 }3
-Input:38:C:\Users\doylle\Desktop\AlgorithmDesignAndAnalysis\proj\tex\Group_10.aux
-!92
+Input:38:D:\SpecDNN\tex\Group_10.aux
+!47
 Postamble:
 Count:3185
 !26

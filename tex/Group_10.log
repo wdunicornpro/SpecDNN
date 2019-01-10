@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.15)  10 JAN 2019 13:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.15)  10 JAN 2019 13:54
 entering extended mode
 **./Group_10.tex
 (Group_10.tex
@@ -309,10 +309,6 @@ Non-PDF special ignored!
 
 
 ]
-Missing character: There is no â in font cmr9!
-Missing character: There is no € in font cmr9!
-Missing character: There is no ¦ in font cmr9!
-
 Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
@@ -364,7 +360,7 @@ nts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.
 pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/urw/times/utmri8a.pfb>
-Output written on Group_10.pdf (3 pages, 143621 bytes).
+Output written on Group_10.pdf (3 pages, 143701 bytes).
 PDF statistics:
  61 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
