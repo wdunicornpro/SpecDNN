@@ -14,19 +14,12 @@
 
 \usepackage{amsmath}
 \usepackage[ruled,lined,boxed,linesnumbered]{algorithm2e}
-%\acmVolume{VV}
-%\acmNumber{N}
-%\acmYear{YYYY}
-%\acmMonth{Month}
-%\acmArticleNum{XXX}
-%\acmdoi{10.1145/XXXXXXX.YYYYYYY}
-
-\acmVolume{28}
-\acmNumber{4}
-\acmYear{2009}
-\acmMonth{September}
-\acmArticleNum{106}
-\acmdoi{10.1145/1559755.1559763}
+\acmVolume{VV}
+\acmNumber{N}
+\acmYear{YYYY}
+\acmMonth{Month}
+\acmArticleNum{XXX}
+\acmdoi{10.1145/XXXXXXX.YYYYYYY}
 
 \begin{document}
 
@@ -97,11 +90,7 @@ The next step involves selecting all the nodes with significant connection to co
 \end{equation}
 $\{r_{j}\}$ is viewed as a uniform random variable distributed on [0,1], and $r_{q}$ is the q-st smallest value of $\{r_{j}\}$ .
 
-<<<<<<< HEAD
-The algorithm selects the smallest possible value of q where $\Omega_{q}<t, \Omega_{q+1}\geq t$ and includes the nodes corresponding to $r_{1}, r_{2},..., r_{q}$.
-=======
 The algorithm selects the smallest possible value of q where $\Omega_{q}<t, \Omega_{q+1}\geq t$ and includes the nodes corresponding to $r_{1}, r_{2}, …, r_{q}$.
->>>>>>> b44d454abf35cf8a1028813efb124cf44ee371a5
 \subsection*{Weight Representation}
 %
 Since Network Community Detection algorithms require positive weights on edges, we desiged a weight representation method, where:
@@ -121,11 +110,7 @@ Since Network Community Detection algorithms require positive weights on edges, 
             Omega[m]$\leftarrow\sum_{i=q}^{m}\binom{m}{i}r^i(1-r)^{m-i}$\\
             \For{q=0;q<m-1;q++}{
                 \If{Omega[q]<t,Omega[q+1]$\geq$t}{
-<<<<<<< HEAD
                     select units 1,2,...,q and return
-=======
-                    select units 1,2,...,q and return 
->>>>>>> b44d454abf35cf8a1028813efb124cf44ee371a5
                 }
             }
             return all units
@@ -157,10 +142,6 @@ Accuracy      & 98.9\%   & 98.66\%  & 98.47\%  & 97.23\%  & 99.01\%  & 98.46\%  
 \hline
 \end{tabular}}
 \label{tab:LeNet-300-100}
-\begin{tabnote}
-This is an example of table footnote. This is an example of table footnote. This is an example of table footnote.
-This is an example of table footnote. This is an example of table footnote.
-\end{tabnote}
 \end{table*}
 
 \begin{table*}[htbp]
@@ -173,10 +154,6 @@ Accuracy      & 99.21\%  & 99.79\%  & 99.37\%  & 99.63\%  & 99.34\%  & 98.53\%  
 \hline
 \end{tabular}}
 \label{tab:LeNet-5}
-\begin{tabnote}
-This is an example of table footnote. This is an example of table footnote. This is an example of table footnote.
-This is an example of table footnote. This is an example of table footnote.
-\end{tabnote}
 \end{table*}
 
 
@@ -193,7 +170,7 @@ Song Han, Huizi Mao, William J. Dally (2016) \emph{Deep Compression: Compressing
 \bibitem{Speedup CNN}
 Max Jaderberg, Andrea Vedaldi, Andrew Zisserman (2014) \emph{Speeding up convolutional neural networks with low rank expansions}. \emph{arXiv}:1405.3866 [cs.CV].
 \bibitem{CAPTOR}
-\emph{CAPTOR: A Class Adaptive Filter Pruning Framework for Convolutional Neural Networks in Mobile Applications}
+\emph{CAPTOR: A Class Adaptive Filter Pruning Framework for Convolutional Neural Networks in Mobile Applications}.
 \bibitem{MNIST}
 Y. LeCun, L. Bottou, Y. Bengio, P. Haffner (1998) \emph{Gradient-based learning applied to document recognition}. \emph{Proceedings of the IEEE}, 86(11):2278-2324.
 \bibitem{Image Recog App}
