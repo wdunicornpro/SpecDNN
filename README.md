@@ -61,7 +61,7 @@ Since Network Community Detection algorithms require positive weights on edges, 
 Our idea is to run OSLOM on DNNs to find strongly connected sub-network.  
 In order to obtain sub-network with specialized functionalities, we perform community detection starting from one of the output units. Since neural networks are fully-connected level graphs, the only reasonable approach is to run community detection in a layer-by-layer manner. Also, because of the special structure of neural networks, the criteria of strong connection can be rewritten as:
 1. ![](https://latex.codecogs.com/gif.latex?r_%7Bj%7D%28C%29%3Dexp%28-%5Cfrac%7Bm%7D%7B2%7D%5Cfrac%7B%5Csum_%7Bi%5Cin%20C%7DW_%7Bij%7D%7D%7B%5Csum_%7Bi%5Cin%20C%2Cj%5Cin%20J%7DW_%7Bij%7D%7D-%5Cfrac%7B1%7D%7B2%7D%29), where ![](https://latex.codecogs.com/gif.latex?%5C%7BW_%7Bij%7D%5C%7D) is the weight matrix, m is the number of units in the current layer, C is all the units included in the last layer and J is all the units in the current layer.
-2. ![](https://latex.codecogs.com/gif.latex?%5COmega_%7Bq%7D%28r%29%3Dp%28r_%7Bq%7D%3Cr%29%3D%5Csum_%7Bi%3Dq%7D%5E%7Bm%7D%7D%5Cbinom%7Bm%7D%7Bi%7Dr%5Ei%281-r%29%5E%7Bm-i%7D)
+2. ![](https://latex.codecogs.com/svg.image?\Omega_{q}(r&space;)=p(r_{q}<r)=\sum_{i=q}^{m}\binom{m}{i}r^i(1-r)^{m-i})
 
 After we calculate the value of ![](https://latex.codecogs.com/gif.latex?%5C%7B%5COmega_%7Bq%7D%5C%7D), we select the smallest possible value of q where![](https://latex.codecogs.com/gif.latex?%5COmega_%7Bq%7D%3Ct%2C%5COmega_%7Bq&plus;1%7D%5Cgeq%20t) and include the first q units.  
 The source code for this is as following:
